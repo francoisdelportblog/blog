@@ -10,10 +10,10 @@ if( (Test-Path $env:DBBackupFolder) -eq $false )
 }
 
 $svr = New-Object 'Microsoft.SqlServer.Management.SMO.Server' $env:SqlInstanceName
-$bdir = $env:DBBackupFolder
-$svnm = $svr.Name
+$backupdir = $env:DBBackupFolder
+$svrinst = $svr.Name
 $db = $svr.Databases["$env:DBName"]
 $dbname = $db.Name
-$dt = get-date -format yyyyMMddHHmmss
-$bfil = "$bdir\$($dbname)_db_$($dt).bak"
-Backup-SqlDatabase -ServerInstance $svnm -Database $dbname -BackupFile $bfil
+$date = get-date -format yyyyMMddHHmmss
+$backupfile = "$backupdir\$($dbname)_db_$($date).bak"
+Backup-SqlDatabase -ServerInstance $svrinst -Database $dbname -BackupFile $backupfile
