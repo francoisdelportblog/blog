@@ -10,7 +10,7 @@ Describe "ManipulateFolders"{
 	Context "Depending on the existence of a folder" {
 		$folder = "c:\temp"
 		#Mock my function with the expected parameter
-		Mock Myfunction {} -Verifiable -ParameterFilter {$myparam -eq $folder}
+		Mock DoStuffToFolders {} -Verifiable -ParameterFilter {$myparam -eq $folder}
 		#Mock these functions to manipulate the file system and scope to Context
 		Mock Remove-Item
 		Mock New-Item
