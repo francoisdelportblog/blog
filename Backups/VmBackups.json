@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "recoveryVault": {
+      "type": "string",
+      "metadata": {
+        "description": "Backup vault name"
+      }
+    },
+    "recoveryPolicy": {
+      "type": "string",
+      "metadata": {
+        "description": "Backcup policy name"
+      }
+    },
+    "vmPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Prefix for VM names, used with vmInstances to build the VM names"
+      }
+    },
+    "vmInstances": {
+      "type": "int",
+      "metadata": {
+        "description": "How many VM instances to find, used with vmPrefix to build the VM names"
+      }
+    },
+    "vmRsg": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource group where VMs reside"
+      }
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "[concat( parameters('recoveryVault'), '/Azure/', 'iaasvmcontainer;iaasvmcontainerv2;', parameters('vmRsg') , ';', parameters('vmPrefix'), copyindex(), '/vm;iaasvmcontainerv2;', parameters('vmRsg'),';', parameters('vmPrefix'), copyindex())]",
+      "apiVersion": "2016-06-01",
+      "location": "[resourceGroup().location]",
+      "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
+      "copy": {
+        "name": "protectedItemsCopy",
+        "count": "[parameters('vmInstances')]"
+      },
+      "properties": {
+        "protectedItemType": "Microsoft.Compute/virtualMachines",
+        "policyId": "[resourceId('Microsoft.RecoveryServices/vaults/backupPolicies', parameters('recoveryVault'), parameters('recoveryPolicy'))]",
+        "sourceResourceId": "[resourceId(subscription().subscriptionId ,parameters('vmRsg'),'Microsoft.Compute/virtualMachines', concat(parameters('vmPrefix'), copyindex()) )]"
+      }
+    }
+  ]
+}
