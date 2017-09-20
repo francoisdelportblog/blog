@@ -2,7 +2,7 @@
     {
         "id": "'"$RANDOM"'",
         "eventType": "ignoreme",
-        "subject": "myapp/vehicles/motorcycles",
+        "subject": "myapp/vehicles/motorcyclestest",
         "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'",
         "data":{
             "make": "Ducati",
