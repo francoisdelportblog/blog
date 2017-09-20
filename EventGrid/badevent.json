@@ -1,0 +1,12 @@
+[
+    {
+        "Badid": "'"$RANDOM"'",
+        "BadeventType": "recordInserted",
+        "Badsubject": "myapp/vehicles/motorcycles",
+        "BadeventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'",
+        "Baddata":{
+            "make": "Ducati",
+            "model": "Monster"
+        }
+    }
+]
