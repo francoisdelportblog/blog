@@ -2,7 +2,7 @@
     {
         "id": "'"$RANDOM"'",
         "eventType": "recordInserted",
-        "Badsubject": "myapp/vehicles/motorcycles",
+        "subject": "myapp/vehicles/motorcycles",
         "BadeventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'",
         "Baddata":{
             "make": "Ducati",
