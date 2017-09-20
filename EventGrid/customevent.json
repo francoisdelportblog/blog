@@ -1,0 +1,12 @@
+[
+    {
+        "id": "'"$RANDOM"'",
+        "eventType": "recordInserted",
+        "subject": "myapp/vehicles/motorcycles",
+        "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'",
+        "data":{
+            "make": "Ducati",
+            "model": "Monster"
+        }
+    }
+]
