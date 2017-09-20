@@ -1,10 +1,10 @@
 [
     {
         "id": "'"$RANDOM"'",
-        "eventType": "recordInserted",
+        "eventType": "ignoreme",
         "subject": "myapp/vehicles/motorcycles",
         "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'",
-        "Baddata":{
+        "data":{
             "make": "Ducati",
             "model": "Monster"
         }
